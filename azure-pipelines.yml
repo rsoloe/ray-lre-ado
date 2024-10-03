@@ -35,3 +35,4 @@ steps:
     varTimeslotRepeatDelay: '30'
     varTimeslotRepeatAttempts: '2'
     artifactsDirectory: '$(Build.ArtifactStagingDirectory)/LRETest'
+  
