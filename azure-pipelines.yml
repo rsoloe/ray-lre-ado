@@ -1,0 +1,37 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+
+- task: LoadRunnerEnterpriseTesting@1
+  inputs:
+    descriptionString: 'LRE perf test'
+    varPCServer: 'https://lrefrademo.saas.microfocus.com/LRE/?tenant=b41e9581-7506-49cf-bf76-e052e4f3ddd2'
+    varUseTokenForAuthentication: true
+    varUserName: 'I_KEY_23aa31ce-fc73-4018-9322-9b3c07999aa2'
+    varPassWord: 'S_KEY_f9d17260-d126-4d3d-93d8-0726809fd2e5'
+    varDomain: 'DEFAULT'
+    varProject: 'LRE_Ray'
+    varTestID: '268'
+    varTrending: 'AssociatedTrend'
+    varTimeslotDuration: '30'
+    varUseSLAInStatus: true
+    vartimeslotRepeat: 'RepeatWithParameters'
+    varTimeslotRepeatDelay: '30'
+    varTimeslotRepeatAttempts: '2'
+    artifactsDirectory: '$(Build.ArtifactStagingDirectory)/LRETest'
