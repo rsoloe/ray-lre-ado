@@ -35,4 +35,9 @@ steps:
     varTimeslotRepeatDelay: '30'
     varTimeslotRepeatAttempts: '2'
     artifactsDirectory: '$(Build.ArtifactStagingDirectory)/LRETest'
-  
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/LRETest'
+    ArtifactName: 'LRE results'
+    publishLocation: 'Container'
